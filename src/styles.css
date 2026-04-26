@@ -1,1 +1,136 @@
-body{margin:0;font-family:sans-serif;background:#111;color:#fff}.app{min-height:100vh;max-width:480px;margin:auto;padding:20px;text-align:center}.card{background:#1e1e1e;border-radius:16px;padding:24px;margin:20px 0}button{width:100%;padding:14px;font-size:1.2rem;border:none;border-radius:12px;margin-top:10px;background:#4caf50;color:#fff}.skip{background:#ff9800}.time-up{background:#ffb3b3}.shake{animation:shake .6s}@keyframes shake{0%{transform:translateX(0)}10%{transform:translateX(-16px)}20%{transform:translateX(16px)}30%{transform:translateX(-16px)}40%{transform:translateX(16px)}50%{transform:translateX(-12px)}60%{transform:translateX(12px)}70%{transform:translateX(-8px)}80%{transform:translateX(8px)}90%{transform:translateX(-4px)}100%{transform:translateX(0)}}
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #111;
+    color: #fff;
+}
+
+.app {
+    min-height: 100vh;
+    max-width: 480px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.card {
+    background: #1e1e1e;
+    border-radius: 16px;
+    padding: 24px;
+    margin: 20px 0;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 12px;
+    margin-top: 10px;
+    background: #4caf50;
+    color: #fff;
+}
+
+button:disabled {
+    opacity: 0.5;
+}
+
+.skip {
+    background: #ff9800;
+}
+.quit {
+    background: #f44336;
+}
+.next-team {
+    background: #2196f3;
+}
+
+input,
+select {
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+}
+
+.options {
+    border-top: 1px solid #333;
+    margin-top: 16px;
+    padding-top: 16px;
+}
+
+.option-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    gap: 12px;
+    margin: 10px 0;
+}
+
+.option-row span {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.team-names {
+    margin-top: 16px;
+}
+
+.team-card {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.team-card input {
+    flex: 1;
+}
+
+.round-input-full {
+    width: 100%;
+    margin-top: 8px;
+}
+
+/* ---------- TOGGLE SWITCH ---------- */
+
+.switch {
+    position: relative;
+    width: 42px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: #555;
+    transition: 0.4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.switch input:checked + .slider {
+    background-color: #4caf50;
+}
+
+.switch input:checked + .slider:before {
+    transform: translateX(18px);
+}
