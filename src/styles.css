@@ -1,9 +1,14 @@
-body {
-    margin: 0;
-    font-family: sans-serif;
-    background: #111;
-    color: #fff;
+/* ---------------- RESET / BASE ---------------- */ /* ---------------- RESET / BASE 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #111;
+  color: #fff;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+/* ---------------- LAYOUT ---------------- */
 
 .app {
     min-height: 100vh;
@@ -20,51 +25,66 @@ body {
     margin: 20px 0;
 }
 
+/* ---------------- BUTTONS ---------------- */
+
 button {
     width: 100%;
     padding: 14px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     border: none;
     border-radius: 12px;
     margin-top: 10px;
     background: #4caf50;
     color: #fff;
+    cursor: pointer;
 }
 
 button:disabled {
-    opacity: 0.5;
+    opacity: 0.4;
+    cursor: not-allowed;
 }
 
 .skip {
     background: #ff9800;
 }
+
 .quit {
     background: #f44336;
 }
+
 .next-team {
     background: #2196f3;
 }
 
+.secondary {
+    background: #666;
+}
+
+/* ---------------- INPUTS ---------------- */
+
 input,
 select {
-    padding: 8px;
-    border-radius: 6px;
+    padding: 8px 10px;
+    border-radius: 8px;
     border: none;
+    font-size: 0.95rem;
 }
+
+/* ---------------- OPTIONS LAYOUT ---------------- */
 
 .options {
     border-top: 1px solid #333;
-    margin-top: 16px;
-    padding-top: 16px;
+    margin-top: 18px;
+    padding-top: 18px;
 }
 
 .option-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    white-space: nowrap;
     gap: 12px;
-    margin: 10px 0;
+    margin: 12px 0;
+    white-space: nowrap;
 }
 
 .option-row span {
@@ -72,32 +92,112 @@ select {
     text-align: left;
 }
 
+/* ---------------- TEAM NAME EDITOR ---------------- */
+
 .team-names {
     margin-top: 16px;
 }
 
 .team-card {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
     gap: 10px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+}
+
+.team-card span {
+    width: 80px;
+    text-align: left;
+    font-size: 0.9rem;
+    opacity: 0.8;
 }
 
 .team-card input {
     flex: 1;
 }
 
-.round-input-full {
-    width: 100%;
-    margin-top: 8px;
+/* ---------------- SCOREBOARD ---------------- */
+
+.scoreboard {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 12px 0;
+    flex-wrap: wrap;
 }
 
-/* ---------- TOGGLE SWITCH ---------- */
+.score-item {
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+
+.score-item.active {
+    opacity: 1;
+    font-weight: bold;
+}
+
+/* ---------------- SCORE FLASH (+1 / -1) ---------------- */
+
+.score-flash {
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    font-weight: 800;
+    pointer-events: none;
+    animation: flashFade 0.7s ease-out forwards;
+    z-index: 1000;
+}
+
+.score-flash.positive {
+    color: #4caf50;
+}
+
+.score-flash.negative {
+    color: #f44336;
+}
+
+@keyframes flashFade {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -60%) scale(0.8);
+    }
+    40% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -40%) scale(1);
+    }
+}
+
+/* ---------------- GAME OVER BUTTON ROW ---------------- */
+
+.gameover-actions {
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.gameover-actions button {
+    flex: 1;
+}
+
+.button-subtext {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    margin-top: 4px;
+}
+
+/* ---------------- TOGGLE SWITCH ---------------- */
 
 .switch {
     position: relative;
     width: 42px;
     height: 24px;
+    flex-shrink: 0;
 }
 
 .switch input {
@@ -108,29 +208,50 @@ select {
 
 .slider {
     position: absolute;
-    cursor: pointer;
     inset: 0;
+    cursor: pointer;
     background-color: #555;
-    transition: 0.4s;
     border-radius: 24px;
+    transition: background-color 0.3s;
 }
 
-.slider:before {
-    position: absolute;
+.slider::before {
     content: "";
+    position: absolute;
     height: 18px;
     width: 18px;
     left: 3px;
     bottom: 3px;
-    background-color: white;
-    transition: 0.4s;
+    background-color: #fff;
     border-radius: 50%;
+    transition: transform 0.3s;
 }
 
 .switch input:checked + .slider {
     background-color: #4caf50;
 }
 
-.switch input:checked + .slider:before {
+.switch input:checked + .slider::before {
     transform: translateX(18px);
+}
+
+/* ---------------- UTILITIES ---------------- */
+
+.round-input-full {
+    width: 100%;
+    margin-top: 8px;
+}
+
+body {
+    margin: 0;
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        sans-serif;
+    background: #111;
+    color: #fff;
+}
+* {
+    box-sizing: border-box;
 }
